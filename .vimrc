@@ -2,6 +2,7 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'mileszs/ack.vim'
+Plug 'scrooloose/nerdtree'
 
 call plug#end()
 " }}}
@@ -53,3 +54,14 @@ silent !stty -ixon
 
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
+
+nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <C-a> <Esc>:Ack<space>
+
+" easier navigation between split windows
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
+let g:ackprg = 'ag --nogroup --nocolor --column'
