@@ -41,6 +41,10 @@ set expandtab                     " use spaces, not tabs
 set backspace=indent,eol,start    " backspace through everything in insert mode
 set autoindent                    " keep indentation level when no indent is found
 
+" Mouse
+set mousehide                     " hide mouse when writing
+set mouse=a                       " we love the mouse
+
 " Searching
 set hlsearch                      " highlight matches...
 nohlsearch                        " but don't highlight last search when reloading
