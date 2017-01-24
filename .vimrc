@@ -3,6 +3,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'mileszs/ack.vim'
 Plug 'scrooloose/nerdtree'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-surround'
+Plug 'wincent/Command-T'
 
 call plug#end()
 " }}}
@@ -57,6 +60,9 @@ autocmd VimLeave * silent !stty ixon
 
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-a> <Esc>:Ack<space>
+nnoremap <Leader>f :CommandT<CR>
+nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
+nnoremap <Leader>. :CommandTTag<CR>
 
 " easier navigation between split windows
 nnoremap <C-J> <C-W>j
