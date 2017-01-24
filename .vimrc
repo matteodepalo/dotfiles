@@ -70,4 +70,13 @@ nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
 
+let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:CommandTCancelMap = ['<Esc>', '<C-C>']
+let g:CommandTFileScanner = 'git'
+let g:CommandTMaxHeight = 20
+let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<Esc>OB']
+let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Esc>OA']
+let g:CommandTTraverseSCM = 'pwd'
+let g:NERDTreeHighlightCursorline = 0
+let g:NERDTreeMouseMode = 3
