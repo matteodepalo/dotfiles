@@ -68,14 +68,19 @@ nnoremap <Leader>f :CommandT<CR>
 nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
 nnoremap <Leader>. :CommandTTag<CR>
 
-" clear the search buffer when hitting return
-nnoremap <CR> :nohlsearch<CR>
-
 " easier navigation between split windows
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
+
+" easy way to switch between latest files
+nnoremap <Leader><Leader> <C-^>
+nnoremap <Leader>vs :execute "vsplit " . bufname("#")<CR>
+nnoremap <Leader>sp :execute "split " . bufname("#")<CR>
+
+" clear the search buffer when hitting return
+nnoremap <CR> :nohlsearch<CR>
 
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -87,3 +92,14 @@ let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Esc>OA']
 let g:CommandTTraverseSCM = 'pwd'
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
+
+" FileType settings {{{
+if has("autocmd")
+  " enable <CR> in command line window and quickfix
+  augroup enable_cr
+    au!
+    au CmdwinEnter * nnoremap <buffer> <CR> <CR>
+    au BufWinEnter quickfix nnoremap <buffer> <CR> <CR>
+  augroup END
+endif
+" }}}
