@@ -63,10 +63,13 @@ silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
 
 nnoremap <C-n> :NERDTreeToggle<CR>
-nnoremap <C-a> <Esc>:Ack<space>
+nnoremap <Leader>a <Esc>:Ack<space>
 nnoremap <Leader>f :CommandT<CR>
 nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
 nnoremap <Leader>. :CommandTTag<CR>
+
+" clear the search buffer when hitting return
+nnoremap <CR> :nohlsearch<CR>
 
 " easier navigation between split windows
 nnoremap <C-J> <C-W>j
