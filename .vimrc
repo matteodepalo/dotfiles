@@ -7,6 +7,7 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wincent/Command-T'
 Plug 'janko-m/vim-test'
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 " }}}
@@ -34,6 +35,8 @@ set nocursorline                  " disable cursor line
 set showcmd                       " display incomplete commands
 set novisualbell                  " no flashes please
 set scrolloff=3                   " provide some context when editing
+set hidden                        " Allow backgrounding buffers without writing them, and
+                                  " remember marks/undo for backgrounded buffers
 
 " Whitespace
 set nowrap                        " don't wrap lines
@@ -78,6 +81,9 @@ nnoremap <Leader>. :CommandTTag<CR>
 nnoremap <leader>t :wa<CR>\|:TestFile<CR>
 nnoremap <leader>T :wa<CR>\|:TestNearest<CR>
 
+" open quickfix when running tests
+autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
+
 " easier navigation between split windows
 nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
@@ -110,6 +116,7 @@ let g:CommandTTraverseSCM = 'pwd'
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
+let test#strategy = "asyncrun"
 
 " FileType settings {{{
 if has("autocmd")
@@ -124,6 +131,18 @@ if has("autocmd")
   augroup filetype_json
     au!
     au BufNewFile,BufRead *.json setf javascript
+  augroup END
+
+  " remember last location in file, but not for commit messages,
+  " or when the position is invalid or inside an event handler,
+  " or when the mark is in the first line, that is the default
+  " position when opening a file. See :help last-position-jump
+  augroup last_position
+    au!
+    au BufReadPost *
+      \ if &filetype !~ '^git\c' && line("'\"") > 1 && line("'\"") <= line("$") |
+      \   exe "normal! g`\"" |
+      \ endif
   augroup END
 endif
 " }}}
