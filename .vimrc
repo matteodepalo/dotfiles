@@ -6,6 +6,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wincent/Command-T'
+Plug 'janko-m/vim-test'
 
 call plug#end()
 " }}}
@@ -74,6 +75,8 @@ nnoremap <Leader>a <Esc>:Ack<space>
 nnoremap <Leader>f :CommandT<CR>
 nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
 nnoremap <Leader>. :CommandTTag<CR>
+nnoremap <leader>t :wa<CR>\|:TestFile<CR>
+nnoremap <leader>T :wa<CR>\|:TestNearest<CR>
 
 " easier navigation between split windows
 nnoremap <C-J> <C-W>j
@@ -95,6 +98,7 @@ command! KillControlM :normal :%s/<C-V><C-M>//e<CR><C-O><CR>
 nnoremap <Leader>kw :KillWhitespace<CR>
 nnoremap <Leader>kcm :KillControlM<CR>
 
+" plugin confirguration
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:CommandTCancelMap = ['<Esc>', '<C-C>']
@@ -105,6 +109,7 @@ let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Esc>OA']
 let g:CommandTTraverseSCM = 'pwd'
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
+let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 
 " FileType settings {{{
 if has("autocmd")
