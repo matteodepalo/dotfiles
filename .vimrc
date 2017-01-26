@@ -10,6 +10,8 @@ Plug 'wincent/Command-T'
 call plug#end()
 " }}}
 
+let mapleader=','
+
 " General settings {{{
 set encoding=utf-8
 set t_Co=256                      " moar colors
@@ -66,7 +68,7 @@ silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
 
-" plugin settings
+" plugin mappings
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>a <Esc>:Ack<space>
 nnoremap <Leader>f :CommandT<CR>
