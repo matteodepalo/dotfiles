@@ -51,6 +51,10 @@ nohlsearch                        " but don't highlight last search when reloadi
 set incsearch                     " incremental searching
 set ignorecase                    " searches are case insensitive...
 set smartcase                     " unless they contain at least one capital letter
+
+" Windows
+set splitright                    " create new horizontal split on the right
+set splitbelow                    " create new vertical split below the current window
 " }}}
 
 " easy global search
@@ -62,6 +66,7 @@ silent !stty -ixon
 " Restore default behaviour when leaving Vim.
 autocmd VimLeave * silent !stty ixon
 
+" plugin settings
 nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <Leader>a <Esc>:Ack<space>
 nnoremap <Leader>f :CommandT<CR>
@@ -82,6 +87,12 @@ nnoremap <Leader>sp :execute "split " . bufname("#")<CR>
 " clear the search buffer when hitting return
 nnoremap <CR> :nohlsearch<CR>
 
+" remove whitespaces and windows EOL
+command! KillWhitespace :normal :%s/\s\+$//e<CR><C-O><CR>
+command! KillControlM :normal :%s/<C-V><C-M>//e<CR><C-O><CR>
+nnoremap <Leader>kw :KillWhitespace<CR>
+nnoremap <Leader>kcm :KillControlM<CR>
+
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:CommandTCancelMap = ['<Esc>', '<C-C>']
@@ -100,6 +111,12 @@ if has("autocmd")
     au!
     au CmdwinEnter * nnoremap <buffer> <CR> <CR>
     au BufWinEnter quickfix nnoremap <buffer> <CR> <CR>
+  augroup END
+
+  " treat JSON files like JavaScript
+  augroup filetype_json
+    au!
+    au BufNewFile,BufRead *.json setf javascript
   augroup END
 endif
 " }}}
