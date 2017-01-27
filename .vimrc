@@ -33,7 +33,7 @@ set relativenumber                " relative numbers are cooler
 set ruler                         " show the cursor position all the time
 set nocursorline                  " disable cursor line
 set showcmd                       " display incomplete commands
-set novisualbell                  " no flashes please
+set noeb vb t_vb=                 " no flashes please
 set scrolloff=3                   " provide some context when editing
 set hidden                        " Allow backgrounding buffers without writing them, and
                                   " remember marks/undo for backgrounded buffers
@@ -66,6 +66,7 @@ set splitbelow                    " create new vertical split below the current 
 " easy global search
 nnoremap <C-S> :Ack <C-R><C-W><CR>
 vnoremap <C-S> y<Esc>:Ack '<C-R>"'<CR>
+
 " Allow us to use Ctrl-s and Ctrl-q as keybinds
 silent !stty -ixon
 
