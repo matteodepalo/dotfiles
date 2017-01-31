@@ -8,6 +8,7 @@ Plug 'tpope/vim-surround'
 Plug 'wincent/Command-T'
 Plug 'janko-m/vim-test'
 Plug 'skywind3000/asyncrun.vim'
+Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 " }}}
