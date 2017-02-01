@@ -106,6 +106,13 @@ command! KillControlM :normal :%s/<C-V><C-M>//e<CR><C-O><CR>
 nnoremap <Leader>kw :KillWhitespace<CR>
 nnoremap <Leader>kcm :KillControlM<CR>
 
+" copy current path
+nnoremap <silent> <Leader>p :let @* = expand("%")<CR>
+
+" expand %% to current directory
+cnoremap %% <C-R>=expand('%:h').'/'<CR>
+nmap <Leader>e :e %%
+
 " plugin confirguration
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
