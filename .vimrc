@@ -1,14 +1,17 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'benmills/vimux'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'janko-m/vim-test'
+Plug 'jiangmiao/auto-pairs'
 Plug 'mileszs/ack.vim'
+Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
+Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'wincent/Command-T'
-Plug 'janko-m/vim-test'
-Plug 'skywind3000/asyncrun.vim'
-Plug 'jiangmiao/auto-pairs'
 
 call plug#end()
 " }}}
@@ -29,6 +32,7 @@ set noswapfile                    " and swap files
 
 " Style
 set background=dark
+color gruvbox
 set number                        " line numbers are cool
 set relativenumber                " relative numbers are cooler
 set ruler                         " show the cursor position all the time
@@ -125,7 +129,7 @@ let g:CommandTTraverseSCM = 'pwd'
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
-let test#strategy = "asyncrun"
+let test#strategy = "vimux"
 
 " FileType settings {{{
 if has("autocmd")
