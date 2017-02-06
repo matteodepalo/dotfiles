@@ -11,6 +11,7 @@ Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/YankRing.vim'
 Plug 'wincent/Command-T'
 
 call plug#end()
@@ -25,6 +26,7 @@ set clipboard=unnamed             " use system clipboard
 set nocompatible                  " nocompatible is good for humans
 syntax enable                     " enable syntax highlighting...
 filetype plugin indent on         " depending on filetypes...
+set timeout tm=1000 ttm=100       " fix slight delay after pressing Esc then O
 set autoread                      " auto load files if vim detects change
 set autowrite                     " auto write files when moving around
 set nobackup                      " disable backup files...
@@ -55,6 +57,7 @@ set autoindent                    " keep indentation level when no indent is fou
 " Mouse
 set mousehide                     " hide mouse when writing
 set mouse=a                       " we love the mouse
+set ttymouse=xterm2
 
 " Searching
 set hlsearch                      " highlight matches...
