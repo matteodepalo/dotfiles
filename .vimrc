@@ -12,7 +12,6 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/YankRing.vim'
 Plug 'wincent/Command-T'
 
 call plug#end()
