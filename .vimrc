@@ -125,8 +125,6 @@ nmap <Leader>e :e %%
 nnoremap <Leader>rm :call delete(expand('%')) \| bdelete!<CR>
 
 " plugin confirguration
-let g:ackhighlight = 1
-let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:CommandTCancelMap = ['<Esc>', '<C-C>']
 let g:CommandTFileScanner = 'git'
 let g:CommandTMaxHeight = 20
@@ -135,9 +133,12 @@ let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Esc>OA']
 let g:CommandTTraverseSCM = 'pwd'
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
+let g:ackhighlight = 1
+let g:ackprg = 'ag --nogroup --nocolor --column'
+let g:test#preserve_screen = 1
+let test#ruby#bundle_exec = 0
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
-let test#ruby#bundle_exec = 0
 
 " FileType settings {{{
 if has("autocmd")
