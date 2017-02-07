@@ -120,6 +120,9 @@ nnoremap <silent> <Leader>p :let @* = expand("%")<CR>
 cnoremap %% <C-R>=expand('%:h').'/'<CR>
 nmap <Leader>e :e %%
 
+" delete current file
+nnoremap <Leader>rm :call delete(expand('%')) \| bdelete!<CR>
+
 " plugin confirguration
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -133,6 +136,7 @@ let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
+let test#ruby#bundle_exec = 0
 
 " FileType settings {{{
 if has("autocmd")
