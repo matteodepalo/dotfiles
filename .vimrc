@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'elzr/vim-json'
 Plug 'janko-m/vim-test'
 Plug 'jiangmiao/auto-pairs'
 Plug 'mileszs/ack.vim'
@@ -69,6 +70,9 @@ set smartcase                     " unless they contain at least one capital let
 " Windows
 set splitright                    " create new horizontal split on the right
 set splitbelow                    " create new vertical split below the current window
+
+" Folding
+set foldmethod=syntax
 " }}}
 
 " easy global search
@@ -122,6 +126,10 @@ nmap <Leader>e :e %%
 
 " delete current file
 nnoremap <Leader>rm :call delete(expand('%')) \| bdelete!<CR>
+
+" toggle a fold with Space
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
 
 " plugin confirguration
 let g:CommandTCancelMap = ['<Esc>', '<C-C>']
