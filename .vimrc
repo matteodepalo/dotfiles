@@ -13,6 +13,7 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/YankRing.vim'
 Plug 'wincent/Command-T'
 
 call plug#end()
@@ -86,7 +87,7 @@ silent !stty -ixon
 autocmd VimLeave * silent !stty ixon
 
 " plugin mappings
-nnoremap <C-n> :NERDTreeToggle<CR>
+nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>a <Esc>:Ack<space>
 nnoremap <Leader>f :CommandT<CR>
 nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
@@ -102,6 +103,12 @@ nnoremap <C-J> <C-W>j
 nnoremap <C-K> <C-W>k
 nnoremap <C-H> <C-W>h
 nnoremap <C-L> <C-W>l
+
+" disable cursor keys in normal mode
+nnoremap <Left>  :echo "no!"<CR>
+nnoremap <Right> :echo "no!"<CR>
+nnoremap <Up>    :echo "no!"<CR>
+nnoremap <Down>  :echo "no!"<CR>
 
 " easy way to switch between latest files
 nnoremap <Leader><Leader> <C-^>
@@ -131,6 +138,11 @@ nnoremap <Leader>rm :call delete(expand('%')) \| bdelete!<CR>
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
+" Y u no consistent?
+function! YRRunAfterMaps()
+  nnoremap <silent> Y :<C-U>YRYankCount 'y$'<CR>
+endfunction
+
 " plugin confirguration
 let g:CommandTCancelMap = ['<Esc>', '<C-C>']
 let g:CommandTFileScanner = 'git'
@@ -143,6 +155,7 @@ let g:NERDTreeMouseMode = 3
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:test#preserve_screen = 1
+let g:yankring_history_dir = '$HOME/.vim'
 let test#ruby#bundle_exec = 0
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
