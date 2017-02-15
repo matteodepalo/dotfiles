@@ -124,6 +124,17 @@ command! KillControlM :normal :%s/<C-V><C-M>//e<CR><C-O><CR>
 nnoremap <Leader>kw :KillWhitespace<CR>
 nnoremap <Leader>kcm :KillControlM<CR>
 
+" remove trailing spaces
+function TrimWhiteSpace()
+  %s/\s*$//
+  ''
+endfunction
+
+autocmd FileWritePre * call TrimWhiteSpace()
+autocmd FileAppendPre * call TrimWhiteSpace()
+autocmd FilterWritePre * call TrimWhiteSpace()
+autocmd BufWritePre * call TrimWhiteSpace()
+
 " copy current path
 nnoremap <silent> <Leader>p :let @* = expand("%")<CR>
 
