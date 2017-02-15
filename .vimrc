@@ -167,7 +167,6 @@ let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:test#preserve_screen = 1
 let g:yankring_history_dir = '$HOME/.vim'
-let test#ruby#bundle_exec = 0
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
 
