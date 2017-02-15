@@ -3,9 +3,8 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'elzr/vim-json'
+Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
-Plug 'jiangmiao/auto-pairs'
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -74,6 +73,7 @@ set splitbelow                    " create new vertical split below the current 
 
 " Folding
 set foldmethod=syntax
+set nofoldenable
 " }}}
 
 " easy global search
