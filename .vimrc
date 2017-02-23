@@ -94,7 +94,6 @@ nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
 nnoremap <Leader>. :CommandTTag<CR>
 nnoremap <leader>t :wa<CR>\|:TestFile<CR>
 nnoremap <leader>T :wa<CR>\|:TestNearest<CR>
-vnoremap <leader><Bar> :'<,'>:Tabularize /<Bar><CR>
 
 " open quickfix when running tests
 autocmd User AsyncRunStart call asyncrun#quickfix_toggle(8, 1)
