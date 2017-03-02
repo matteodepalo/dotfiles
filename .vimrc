@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'mileszs/ack.vim'
@@ -13,7 +14,6 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/YankRing.vim'
-Plug 'wincent/Command-T'
 
 call plug#end()
 " }}}
@@ -89,9 +89,9 @@ autocmd VimLeave * silent !stty ixon
 " plugin mappings
 nnoremap <Leader>n :NERDTreeToggle<CR>
 nnoremap <Leader>a <Esc>:Ack<space>
-nnoremap <Leader>f :CommandT<CR>
-nnoremap <Leader>F :CommandTFlush<CR>\|:CommandT<CR>
-nnoremap <Leader>. :CommandTTag<CR>
+nnoremap <Leader>f :CtrlP<CR>
+nnoremap <Leader>F :CtrlPClearCache<CR>\|:CtrlP<CR>
+nnoremap <Leader>b :CtrlPBuffer<CR>
 nnoremap <leader>t :wa<CR>\|:TestFile<CR>
 nnoremap <leader>T :wa<CR>\|:TestNearest<CR>
 
@@ -155,12 +155,7 @@ function! YRRunAfterMaps()
 endfunction
 
 " plugin confirguration
-let g:CommandTCancelMap = ['<Esc>', '<C-C>']
-let g:CommandTFileScanner = 'git'
-let g:CommandTMaxHeight = 20
-let g:CommandTSelectNextMap = ['<C-n>', '<C-j>', '<Esc>OB']
-let g:CommandTSelectPrevMap = ['<C-p>', '<C-k>', '<Esc>OA']
-let g:CommandTTraverseSCM = 'pwd'
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
 let g:ackhighlight = 1
