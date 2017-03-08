@@ -36,3 +36,5 @@ function tat {
   name=$(basename `pwd`)
   (tmux ls | grep $name) && tmux attach -t $name || tmux new-session -s $name
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

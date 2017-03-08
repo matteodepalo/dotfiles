@@ -3,9 +3,9 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ctrlpvim/ctrlp.vim'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
 Plug 'scrooloose/nerdtree'
@@ -88,11 +88,8 @@ autocmd VimLeave * silent !stty ixon
 
 " plugin mappings
 nnoremap <Leader>n :NERDTreeToggle<CR>
+nnoremap <Leader>f :FZF<CR>
 nnoremap <Leader>a <Esc>:Ack<space>
-nnoremap <Leader>f :CtrlP<CR>
-nnoremap <Leader>F :CtrlPClearCache<CR>\|:CtrlP<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>m :CtrlPMRUFiles<CR>
 nnoremap <leader>t :wa<CR>\|:TestFile<CR>
 nnoremap <leader>T :wa<CR>\|:TestNearest<CR>
 
@@ -156,8 +153,6 @@ function! YRRunAfterMaps()
 endfunction
 
 " plugin confirguration
-let g:ctrlp_match_window = 'bottom,order:btt,min:5,max:5,results:5'
-let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files . -co --exclude-standard']
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeMouseMode = 3
 let g:ackhighlight = 1
