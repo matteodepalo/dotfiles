@@ -3,6 +3,7 @@ call plug#begin('~/.vim/plugged')
 
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
+Plug 'elixir-lang/vim-elixir'
 Plug 'godlygeek/tabular'
 Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
