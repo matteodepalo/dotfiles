@@ -9,6 +9,7 @@ Plug 'janko-m/vim-test'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'mileszs/ack.vim'
 Plug 'morhetz/gruvbox'
+Plug 'mxw/vim-jsx'
 Plug 'scrooloose/nerdtree'
 Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
@@ -160,6 +161,7 @@ let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:test#preserve_screen = 1
 let g:yankring_history_dir = '$HOME/.vim'
+let g:jsx_ext_required = 0
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
 
