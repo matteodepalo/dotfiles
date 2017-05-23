@@ -1,6 +1,7 @@
 " Plugins {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'AndrewRadev/sideways.vim'
 Plug 'benmills/vimux'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'elixir-lang/vim-elixir'
@@ -15,7 +16,6 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
-Plug 'vim-scripts/YankRing.vim'
 
 call plug#end()
 " }}}
@@ -60,7 +60,9 @@ set autoindent                    " keep indentation level when no indent is fou
 " Mouse
 set mousehide                     " hide mouse when writing
 set mouse=a                       " we love the mouse
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 " Searching
 set hlsearch                      " highlight matches...
@@ -124,17 +126,6 @@ command! KillControlM :normal :%s/<C-V><C-M>//e<CR><C-O><CR>
 nnoremap <Leader>kw :KillWhitespace<CR>
 nnoremap <Leader>kcm :KillControlM<CR>
 
-" remove trailing spaces
-function! TrimWhiteSpace()
-  %s/\s*$//
-  ''
-endfunction
-
-autocmd FileWritePre * call TrimWhiteSpace()
-autocmd FileAppendPre * call TrimWhiteSpace()
-autocmd FilterWritePre * call TrimWhiteSpace()
-autocmd BufWritePre * call TrimWhiteSpace()
-
 " copy current path
 nnoremap <silent> <Leader>p :let @* = expand("%")<CR>
 
@@ -149,10 +140,10 @@ nnoremap <Leader>rm :call delete(expand('%')) \| bdelete!<CR>
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-" Y u no consistent?
-function! YRRunAfterMaps()
-  nnoremap <silent> Y :<C-U>YRYankCount 'y$'<CR>
-endfunction
+" terminal mapping
+if has('nvim')
+	tnoremap <Esc> <C-\><C-n>
+endif
 
 " plugin confirguration
 let g:NERDTreeHighlightCursorline = 0
@@ -160,7 +151,6 @@ let g:NERDTreeMouseMode = 3
 let g:ackhighlight = 1
 let g:ackprg = 'ag --nogroup --nocolor --column'
 let g:test#preserve_screen = 1
-let g:yankring_history_dir = '$HOME/.vim'
 let g:jsx_ext_required = 0
 let test#ruby#minitest#file_pattern = 'test_.*\.rb' " the default is '_test\.rb'
 let test#strategy = "vimux"
